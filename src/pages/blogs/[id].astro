@@ -1,0 +1,44 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import data from "../../data/blogDates.json";
+export async function getStaticPaths() {
+    const res = await fetch("https://apis.ccbp.in/blogs");
+    const resData = await res.json();
+  return resData.map((post) => {
+    return {
+      params: { id: post.id }
+    };
+  });
+}
+const {id} = Astro.params;
+const blogData = await fetch(`https://apis.ccbp.in/blogs/${id}`);
+const blogDataRes = await blogData.json();
+---
+<Layout>
+
+    <div class="max-w-[1200px] m-auto py-10 px-6">
+        <div class="md:max-w-[1000px] m-auto">
+            <div>
+                <div class="flex items-center gap-x-3">
+                    <a class="relative z-10 rounded-full bg-black px-3 py-1.5 text-white font-semibold cursor-pointer max-w-max" href="/blogs">&larr; Back</a>
+                    <p class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 text-gray-600 hover:bg-gray-100 font-semibold cursor-pointer max-w-max">{blogDataRes.topic}</p>
+                </div>
+                
+                <h1 class="text-black font-bold text-2xl md:text-4xl py-3">{blogDataRes.title}</h1>
+            </div>
+            <div class="flex gap-x-3 items-center py-4">
+                <img src={blogDataRes.avatar_url} alt="person" class="h-20 w-20 rounded-full"/>
+                <div>
+                    <p class="m-0 text-black font-bold text-lg">{blogDataRes.author}</p>
+                    <p class="m-0 text-black font-medium text-base">{data[blogDataRes.id].date}</p>
+                </div>
+            </div>
+        </div>
+        
+        <img src={blogDataRes.image_url} alt="topic-image" class="w-full md:h-[450px] lg:h-[550px] rounded-md py-6"/>
+        <div class="md:max-w-[1000px] m-auto text-start md:text-justify text-black font-semibold text-xl">
+            {blogDataRes.content}
+        </div>
+    </div>
+    
+</Layout>

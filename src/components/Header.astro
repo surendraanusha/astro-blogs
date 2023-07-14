@@ -1,0 +1,16 @@
+---
+import logo from "../../src/images/astro-logomark-light.png";
+---
+
+<header class="bg-cyan-900">
+    <nav class="flex justify-between items-center  px-10 py-3 max-w-[1400px] m-auto">
+        <a href="/" title="Home">
+            <img src={logo} class="h-10"/>
+        </a>
+        <ul class="p-0 flex gap-4">
+            <a href="/" title="Home"><li class="text-white font-semibold text-lg cursor-pointer"> Home </li></a>
+            <a href="/blogs" title="Blogs"><li class="text-white font-semibold text-lg cursor-pointer"> Blogs </li></a>
+            <a href="/about" title="About"><li class="text-white font-semibold text-lg cursor-pointer"> About </li></a>
+        </ul>
+    </nav>
+</header>

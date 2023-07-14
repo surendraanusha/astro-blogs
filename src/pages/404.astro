@@ -1,0 +1,14 @@
+---
+import Layout from "../layouts/Layout.astro";
+import error from "../../src/images/404_error.svg";
+---
+
+<Layout>
+  <div class="flex flex-col justify-center items-center h-[100vh]">
+    <img src={error} class="h-[55%]" />
+    <h1 class="text-gray-600 text-2xl font-bold pb-4">
+      Sorry we couldn't able to find the page
+    </h1>
+    <a href="/" class="bg-blue-500 text-white text-xl p-3 rounded-lg">Go To Home page</a>
+  </div>
+</Layout>

@@ -1,0 +1,12 @@
+---
+export interface data{
+    data:object
+}
+// const ele = Astro.props.title
+---
+<div class="bg-gradient-to-b from-slate-900 via-sky-800 to-gray-700 h-[60vh] flex flex-col justify-center items-center">
+    <h1 class="text-white font-bold text-4xl">{Astro.props.data.title}</h1>
+    <p class="text-white text-2xl font-semibold">{Astro.props.data.sub}</p>
+    <!-- <p>{ele}</p> -->
+</div>
+
